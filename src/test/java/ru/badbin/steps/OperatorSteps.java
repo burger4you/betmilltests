@@ -7,7 +7,6 @@ import ru.badbin.pages.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.logging.Logger;
 
 import static net.thucydides.core.matchers.BeanMatchers.the;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -56,7 +55,7 @@ public class OperatorSteps extends ScenarioSteps {
             finishSessionForm.loading();
             finishSessionForm.click_to_confirm_button();
             sessions.click_to_confirm_alert_button();
-            Logger.getGlobal().info("Текущая смена была перед открытием новой смены");
+//            Logger.getGlobal().info("Текущая смена была перед открытием новой смены");
             sessions.click_to_new_session_button();
         }
         newSessionForm.loading();

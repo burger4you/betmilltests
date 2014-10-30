@@ -7,8 +7,6 @@ import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
-import java.util.logging.Logger;
-
 @DefaultUrl("http://autotest.dev.badbin.ru/office/")
 public class SessionsWindow extends PageObject {
 
@@ -43,7 +41,7 @@ public class SessionsWindow extends PageObject {
     public void click_to_finish_current_session_button() {
         finishSessionButton.click();
         if (containsAllText("В настоящее время по данной кассе нет открытой смены")) {
-            Logger.getGlobal().info("Открытых смен нет");
+//            Logger.getGlobal().info("Открытых смен нет");
             confirmErrorButton.click();
         }
     }
