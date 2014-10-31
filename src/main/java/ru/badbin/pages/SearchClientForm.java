@@ -22,7 +22,7 @@ public class SearchClientForm extends PageObject {
     @FindBy(name = "term")
     private WebElementFacade searchField;
 
-    @FindBy(id = "input-search button")
+    @FindBy(xpath = ".//*[@class='input-search button']")
     private WebElementFacade okButton;
 
     @FindBy(xpath = ".//*[@class='b-events-grid']")

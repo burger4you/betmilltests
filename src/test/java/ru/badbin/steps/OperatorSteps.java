@@ -7,6 +7,7 @@ import ru.badbin.pages.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.logging.Logger;
 
 import static net.thucydides.core.matchers.BeanMatchers.the;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -48,22 +49,25 @@ public class OperatorSteps extends ScenarioSteps {
         desktop.click_to_sessions_shortcut();
         sessions.loading();
         sessions.click_to_new_session_button();
-        waitABit(3000);
+        waitABit(1000);
         if (sessions.containsText("По данной кассе не была завершена предыдущая смена")) {
             sessions.click_to_confirm_alert_button();
             sessions.click_to_finish_current_session_button();
             finishSessionForm.loading();
             finishSessionForm.click_to_confirm_button();
-            sessions.click_to_confirm_alert_button();
-//            Logger.getGlobal().info("Текущая смена была перед открытием новой смены");
+            sessions.loading();
+            waitABit(3000);
+            sessions.escape_printing();
+            sessions.getDriver().switchTo().defaultContent();
             sessions.click_to_new_session_button();
+            Logger.getGlobal().info("Текущая смена была завершена перед открытием новой смены");
         }
         newSessionForm.loading();
         newSessionForm.enter_operator_name(operatorFio);
         newSessionForm.click_to_confirm_button();
+        sessions.loading();
         sessions.click_to_confirm_alert_button();
-        waitABit(3000);
-        sessions.getDriver().switchTo().defaultContent();
+
     }
 
     @Step

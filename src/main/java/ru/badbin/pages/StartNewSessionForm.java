@@ -13,10 +13,10 @@ public class StartNewSessionForm extends PageObject {
     @FindBy(id = "operatorFioField")
     private WebElementFacade operatorFioField;
 
-    @FindBy(id = "ext-comp-1088")
+    @FindBy(id = "ext-comp-1087")
     private WebElementFacade confirmButton;
 
-    @FindBy(id = "ext-comp-1089")
+    @FindBy(id = "ext-comp-1088")
     private WebElementFacade cancelButton;
 
 

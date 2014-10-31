@@ -7,6 +7,10 @@ import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.logging.Logger;
+
 @DefaultUrl("http://autotest.dev.badbin.ru/office/")
 public class SessionsWindow extends PageObject {
 
@@ -41,7 +45,7 @@ public class SessionsWindow extends PageObject {
     public void click_to_finish_current_session_button() {
         finishSessionButton.click();
         if (containsAllText("В настоящее время по данной кассе нет открытой смены")) {
-//            Logger.getGlobal().info("Открытых смен нет");
+            Logger.getGlobal().info("Открытых смен нет");
             confirmErrorButton.click();
         }
     }
@@ -64,5 +68,15 @@ public class SessionsWindow extends PageObject {
 
     public void click_to_confirm_alert_button() {
         confirmAlertButton.click();
+    }
+
+    public void escape_printing() {
+        try {
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_ESCAPE);
+            robot.keyRelease(KeyEvent.VK_ESCAPE);
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
     }
 }

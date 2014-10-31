@@ -19,10 +19,10 @@ import static net.thucydides.core.pages.components.HtmlTable.rowsFrom;
 @DefaultUrl("http://autotest.dev.badbin.ru/office/")
 public class HandlingFillingWindow extends PageObject {
 
-    @FindBy(xpath = ".//*[@title='Поиск клиентов']")
+    @FindBy(xpath = ".//*[@class='account__clients search-clients sprite sprite_clients']")
     private WebElementFacade searchClientIcon;
 
-    @FindBy(xpath = ".//table[@class='b-events-grid']")
+    @FindBy(xpath = ".//*[@class='b-events-grid']")
     private WebElementFacade betsTable;
 
     @FindBy(xpath = ".//*[@class='bet-value']")
@@ -31,7 +31,7 @@ public class HandlingFillingWindow extends PageObject {
     @FindBy(id = "submit")
     private WebElementFacade confirmBetButton;
 
-    @FindBy(css = "a.live.item")
+    @FindBy(xpath = ".//*[@class='live item']")
     private WebElementFacade liveMenuItem;
 
     public HandlingFillingWindow(WebDriver driver) {
@@ -40,8 +40,8 @@ public class HandlingFillingWindow extends PageObject {
 
     @WhenPageOpens
     public void loading() {
-        waitForWithRefresh();
-        element(By.xpath(".//*[@title='Поиск клиентов']")).waitUntilEnabled();
+        getDriver().switchTo().frame(0);
+        element(By.xpath(".//*[@class='account__clients search-clients sprite sprite_clients']")).waitUntilEnabled();
 //        betsTable.waitUntilEnabled();
         searchClientIcon.shouldBeEnabled();
 
